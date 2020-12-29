@@ -57,5 +57,6 @@ def close_old_connections(**kwargs):
         conn.close_if_unusable_or_obsolete()
 
 
+# 在每次请求开始和结束的时候，关闭失效的数据连接
 signals.request_started.connect(close_old_connections)
 signals.request_finished.connect(close_old_connections)
